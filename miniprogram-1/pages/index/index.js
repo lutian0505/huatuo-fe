@@ -32,7 +32,10 @@ Page({
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     console.info("wechatIds: " + app.globalData.wechatIds);
-    this.login(app.globalData.wechatIds);
+    app.bindWithUnionid(app.globalData.wechatIds, true);
+    this.setData({
+      loginSuccess: app.globalData.loginSuccess
+    })
   },
   getStaffid: function (e) {
     var that = this
@@ -41,11 +44,5 @@ Page({
     that.setData({
       staffid: val
     });
-  },
-  login: function (unionid) {
-    app.login(unionid, true);
-    this.setData({
-      loginSuccess: app.globalData.loginSuccess
-    })
   }
 })

@@ -1,11 +1,19 @@
 //app.js
 App({
-  login: function (unionid, isDummy) {
+  loginWithUnionid: function (unionid, isDummy) {
     //TODO: get staff id
     if (isDummy){
       this.globalData.staffid='43859166';
       this.globalData.loginSuccess=true;
     }else{
+      console.info('call backend');
+    }
+  },
+  bindWithUnionid: function (unionid, isDummy) {
+    if (isDummy) {
+      this.globalData.staffid = '43859166';
+      this.globalData.loginSuccess = true;
+    } else {
       console.info('call backend');
     }
   },
@@ -23,7 +31,7 @@ App({
         //TODO: get unionId and set in global ids
         this.globalData.wechatIds={'unionId':'123', 'openId':'456'};
         console.log("get unionid done") 
-        this.login(this.globalData.wechatIds, false);
+        this.loginWithUnionid(this.globalData.wechatIds, false);
       }
     })
     // 获取用户信息
