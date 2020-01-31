@@ -1,15 +1,43 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="page-section" wx:if="{{!loginSuccess}}">
+<view class="page">
+  <view class="page__bd" wx:if="{{!loginSuccess}}">
+    <view class="weui-cells__title">请填写你的员工信息
+    </view>
     <view class="weui-cells weui-cells_after-title">
-      <view class="weui-cell weui-cell_input">
-        <input class="weui-input" auto-focus placeholder="请填写你的staffid" bindinput="getStaffid"/>
+      <view class="weui-cell ">
+          <view class="weui-cell__hd">
+              <view class="weui-label">员工号</view>
+          </view>
+          <view class="weui-cell__bd">
+              <input class="weui-input" placeholder="请输入你的员工号"/>
+          </view>
+      </view>
+      <view class="weui-cell">
+          <view class="weui-cell__hd">
+              <view class="weui-label">确认输入</view>
+          </view>
+          <view class="weui-cell__bd">
+              <input class="weui-input" placeholder="请再次输入你的员工号"/>
+          </view>
       </view>
     </view>
+
+    <view class="weui-cells__title">
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell ">
+          <view class="weui-cell__hd">
+              <view class="weui-label">中文姓名</view>
+          </view>
+          <view class="weui-cell__bd">
+              <input class="weui-input" placeholder="你的中文姓名"/>
+          </view>
+      </view>
+    </view>  
   </view>
   
   <view class="userinfo">
-    <button wx:if="{{!loginSuccess}}" open-type="getUserInfo" bindtap="binding"> 绑定信息 </button>
+    <button class="weui-btn" type="default" plain="true" wx:if="{{!loginSuccess}}" open-type="getUserInfo" bindtap="binding"> 绑定信息 </button>
     <block wx:else>
       <text>News Waterflow. To Be Continue...</text>
     </block>

@@ -1,19 +1,35 @@
 /* pages/databaseGuide/databaseGuide.wxss */
 
+
+
 .counter {
   margin: 10px;
 }
-.weui-label{
- font-size:20px;
- font-weight: bold;
+input{
+  
+  font-size:20px;
+  padding:5px;
+  border: 1px solid #ddd;
 }
-.section{
+radio, .checkbox{
+  display: block; 
+}
+.style-lable{
+  padding:5px;
+  border: 1px solid #ddd;
+}
+.report-title view{
+  margin-top:10px;
+}
+.weui-cells__title{
   margin: 10px 0;
-  border-bottom: 1px solid #ddd;
-  padding-bottom:10px;
 }
-.radio{
-  display: block;
-  border-bottom: 1px solid #ddd;
-  padding:10px 0;
+.section__title{
+  font-size:15px;
+}
+button {
+  background-color: #DB0011!important;
+  margin: 10px;
+  width: 100%!important;
+  color:#FFF!important;
 }

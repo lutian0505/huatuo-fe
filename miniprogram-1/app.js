@@ -1,30 +1,21 @@
 //app.js
 App({
-  loginWithUnionid: function (unionid, isDummy) {
+  loginWithCode: function (code, isDummy) {
     //TODO: get staff id
     if (isDummy){
       this.globalData.staffid='43859166';
       this.globalData.loginSuccess=true;
+      this.globalData.accessKey='1232';
     }else{
       console.info('call backend to check whether has bind');
     }
   },
-  bindWithUnionid: function (unionid, isDummy) {
+  bindWithAccessKey: function (accessKey, isDummy) {
     if (isDummy) {
       this.globalData.staffid = '43859166';
       this.globalData.loginSuccess = true;
-      wx.navigateTo({
-        url: "../report/report"
-      })
     } else {
       console.info('call backend to bind');
-    }
-  },
-  getWechatids: function (code, isDummy) {
-    if(isDummy){
-      this.globalData.wechatIds = { 'unionId': '123', 'openId': '456' };
-    }else{
-      console.info('call backend get wechat id');
     }
   },
   onLaunch: function () {
@@ -37,11 +28,8 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        console.log(res.code)
-        //TODO: get unionId and set in global ids
-        this.getWechatids(res.code);
-        console.log("get unionid done") 
-        this.loginWithUnionid(this.globalData.wechatIds, false);
+        console.log(res.code);
+        this.loginWithCode(res.code, false);
       }
     })
     // 获取用户信息
@@ -68,7 +56,7 @@ App({
   globalData: {
     userInfo: null,
     staffid: null,
-    wechatIds: null,
+    accessKey: null,
     loginSuccess: false
   }
 })
