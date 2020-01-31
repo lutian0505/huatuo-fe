@@ -1,0 +1,19 @@
+/* pages/databaseGuide/databaseGuide.wxss */
+
+.counter {
+  margin: 10px;
+}
+.weui-label{
+ font-size:20px;
+ font-weight: bold;
+}
+.section{
+  margin: 10px 0;
+  border-bottom: 1px solid #ddd;
+  padding-bottom:10px;
+}
+.radio{
+  display: block;
+  border-bottom: 1px solid #ddd;
+  padding:10px 0;
+}

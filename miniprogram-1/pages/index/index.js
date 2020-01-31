@@ -9,12 +9,6 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     staffid: ''
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
   onLoad: function () {
     console.info("staffid: " + app.globalData.staffid);
     if (app.globalData.loginSuccess){

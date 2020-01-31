@@ -1,0 +1,46 @@
+<!-- 简介 -->
+  <view class="counter">
+  <view class="weui-two">
+    <view class="section">
+      <view class="weui-cells__title">姓名</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <input class="weui-input"  maxlength="10" bindinput="bindKeyInput" placeholder="输入同步到view中"/>
+        </view>
+      </view>
+    </view>
+    <view class="section">
+      <view class="section__title">性别</view>
+      <picker bindchange="bindPickerChange" value="{{sexIndex}}" range="{{sexArray}}">
+        <view class="picker">
+          当前选择：{{sexArray[sexIndex]}}
+        </view>
+      </picker>
+    </view>
+    <view class="section">
+      <view class="section__title">联系方式</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <input class="weui-input" type="number"  maxlength="11" bindinput="bindKeyInput" placeholder="输入涉事人的联系方式"/>
+        </view>
+      </view>
+    </view>
+    <view class="section">
+      <view class="section__title">出生日期</view>
+      <picker mode="date" value="{{date}}" start="1990-01-01" end="2020-09-01" bindchange="bindDateChange">
+        <view class="picker">
+          当前选择: {{date}}
+        </view>
+      </picker>
+    </view>
+    <view class="section">
+      <view class="section__title">人员类型</view>
+      <radio-group class="radio-group" bindchange="radioChange">
+          <radio class="radio" wx:for-items="{{items}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
+              <text>{{item.value}}</text>
+          </radio>
+      </radio-group>
+    </view>
+  </view>
+  
+</view>

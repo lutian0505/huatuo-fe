@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/report/report"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -10,5 +11,24 @@
     "navigationBarTextStyle": "black"
   },
   "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#11cd6e",
+    "borderStyle": "white",
+    "list": [
+      {
+        "selectedIconPath": "image/home.jpg",
+        "iconPath": "image/home.jpg",
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "selectedIconPath": "image/upload.jpg",
+        "iconPath": "image/upload.jpg",
+        "pagePath": "pages/report/report",
+        "text": "上报"
+      }
+    ]
+  }
 }

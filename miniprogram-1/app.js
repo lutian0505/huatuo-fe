@@ -6,15 +6,25 @@ App({
       this.globalData.staffid='43859166';
       this.globalData.loginSuccess=true;
     }else{
-      console.info('call backend');
+      console.info('call backend to check whether has bind');
     }
   },
   bindWithUnionid: function (unionid, isDummy) {
     if (isDummy) {
       this.globalData.staffid = '43859166';
       this.globalData.loginSuccess = true;
+      wx.navigateTo({
+        url: "../report/report"
+      })
     } else {
-      console.info('call backend');
+      console.info('call backend to bind');
+    }
+  },
+  getWechatids: function (code, isDummy) {
+    if(isDummy){
+      this.globalData.wechatIds = { 'unionId': '123', 'openId': '456' };
+    }else{
+      console.info('call backend get wechat id');
     }
   },
   onLaunch: function () {
@@ -29,7 +39,7 @@ App({
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         console.log(res.code)
         //TODO: get unionId and set in global ids
-        this.globalData.wechatIds={'unionId':'123', 'openId':'456'};
+        this.getWechatids(res.code);
         console.log("get unionid done") 
         this.loginWithUnionid(this.globalData.wechatIds, false);
       }

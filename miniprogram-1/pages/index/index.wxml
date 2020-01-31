@@ -11,7 +11,7 @@
   <view class="userinfo">
     <button wx:if="{{!loginSuccess}}" open-type="getUserInfo" bindtap="binding"> 绑定信息 </button>
     <block wx:else>
-      <text>login success</text>
+      <text>News Waterflow. To Be Continue...</text>
     </block>
   </view>
 </view>
