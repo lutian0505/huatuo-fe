@@ -1,19 +1,17 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="userinfo">
-
-    <view class="page-section">
-      <view class="weui-cells weui-cells_after-title">
-        <view class="weui-cell weui-cell_input">
-          <input class="weui-input" auto-focus placeholder="请填写你的staffid"/>
-        </view>
+  <view class="page-section" wx:if="{{!loginSuccess}}">
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <input class="weui-input" auto-focus placeholder="请填写你的staffid" bindinput="getStaffid"/>
       </view>
     </view>
-
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 绑定信息 </button>
+  </view>
+  
+  <view class="userinfo">
+    <button wx:if="{{!loginSuccess}}" open-type="getUserInfo" bindtap="binding"> 绑定信息 </button>
     <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      <text>login success</text>
     </block>
   </view>
 </view>

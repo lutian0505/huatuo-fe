@@ -1,16 +1,29 @@
 //app.js
 App({
+  login: function (unionid, isDummy) {
+    //TODO: get staff id
+    if (isDummy){
+      this.globalData.staffid='43859166';
+      this.globalData.loginSuccess=true;
+    }else{
+      console.info('call backend');
+    }
+  },
   onLaunch: function () {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
-    // 登录
+    // 登录, everytime open will call
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         console.log(res.code)
+        //TODO: get unionId and set in global ids
+        this.globalData.wechatIds={'unionId':'123', 'openId':'456'};
+        console.log("get unionid done") 
+        this.login(this.globalData.wechatIds, false);
       }
     })
     // 获取用户信息
@@ -35,6 +48,9 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    staffid: null,
+    wechatIds: null,
+    loginSuccess: false
   }
 })
