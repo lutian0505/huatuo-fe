@@ -18,14 +18,14 @@
     "borderStyle": "white",
     "list": [
       {
-        "selectedIconPath": "image/home.jpg",
-        "iconPath": "image/home.jpg",
+        "selectedIconPath": "image/home.png",
+        "iconPath": "image/home.png",
         "pagePath": "pages/index/index",
         "text": "首页"
       },
       {
-        "selectedIconPath": "image/upload.jpg",
-        "iconPath": "image/upload.jpg",
+        "selectedIconPath": "image/upload.png",
+        "iconPath": "image/upload.png",
         "pagePath": "pages/report/report",
         "text": "上报"
       }
