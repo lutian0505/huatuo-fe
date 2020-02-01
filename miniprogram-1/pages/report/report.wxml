@@ -22,11 +22,11 @@
       </radio-group>
     </view>
     <view class="section" wx:if="{{reportOther === '1'}}">
-      <view class="section__title">2. 你可以提供你所报告的同事的员工号吗 Can you provide the reported colleagues' staff ID？</view>
+      <view class="section__title"><view class="change_index"><view>2. </view></view> 你可以提供你所报告的同事的员工号吗 Can you provide the reported colleagues' staff ID？</view>
       <view class="weui-cells__title"><input type="number"  maxlength="11" bindinput="bindKeyInput" placeholder=""/></view>
     </view>
     <view class="section">
-      <view class="section__title">3. 你或者被你报告的同事，现在的情况是 What is the current circumstance of the reported colleague？</view>
+      <view class="section__title"><view class="change_index"><view wx:if="{{reportOther !== '1'}}">2. </view><view wx:else>3. </view></view> 你或者被你报告的同事，现在的情况是 What is the current circumstance of the reported colleague？</view>
       <radio-group class="radio-group weui-cells__title" bindchange="radioCircumstanceStatusCode">
         <view class="radio " wx:key="key" wx:for-items="{{circumstances}}">
             <radio value="{{item.name}}" checked="{{item.checked}}"/>
@@ -35,7 +35,7 @@
       </radio-group>
     </view>
     <view class="section" wx:if="{{circumstanceStatusCode === '4'}}">
-      <view class="section__title">4. 有何症状</view>
+      <view class="section__title"><view class="change_index"><view wx:if="{{reportOther !== '1'}}">3. </view><view wx:else>4. </view></view> 有何症状</view>
       <checkbox-group class="weui-cells__title" bindchange="checkboxSymptomsChange">
         <label class="checkbox" wx:for="{{symptoms}}">
           <checkbox value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
@@ -43,7 +43,7 @@
       </checkbox-group>
     </view>
     <view class="section" style="margin-top:10px">
-      <view class="section__title">5. 你或者被你报告的同事，现在的所在地 Where are you or the reported colleague located?</view>
+      <view class="section__title"><view class="change_index"><view wx:if="{{circumstanceStatusCode === '4'&&reportOther !== '1'}}">4. </view><view wx:elif="{{circumstanceStatusCode === '4'&&reportOther == '1'}}">5. </view><view wx:elif="{{reportOther !== '1'}}">3. </view><view wx:else>4. </view></view> 你或者被你报告的同事，现在的所在地 Where are you or the reported colleague located?</view>
       <view class="weui-cells__title" >
         <picker mode="region" bindchange="bindLocated" value="{{detailed}}" custom-item="{{customItem}}" name="detailed">
           <view class="picker"><view style="opacity:0;display: inline;">a</view>{{detailed}}</view>
@@ -51,13 +51,13 @@
       </view>
     </view>
     <view class="section">
-      <view class="section__title">6. 你或者被你报告的同事，是什么时候开始发现相关症状的 When did the current symptom start？</view>
+      <view class="section__title"><view class="change_index"><view wx:if="{{circumstanceStatusCode === '4'&&reportOther !== '1'}}">5. </view><view wx:elif="{{circumstanceStatusCode === '4'&&reportOther == '1'}}">6. </view><view wx:elif="{{reportOther !== '1'}}">4. </view><view wx:else>5. </view></view> 你或者被你报告的同事，是什么时候开始发现相关症状的 When did the current symptom start？</view>
       <picker mode="date" value="{{startDate}}" class=" weui-cells__title" start="1870-01-01" end="2050-12-31" bindchange="bindDateChange">
         <view class="picker"><view style="opacity:0;display: inline;">a</view>{{startDate}} </view>
       </picker>
     </view>
     <view class="section">
-      <view class="section__title">7. 你或者被你报告的同事，需要公司提供紧急支持吗 Does the reported colleague need emergency support from the company？</view>
+      <view class="section__title"><view class="change_index"><view wx:if="{{circumstanceStatusCode === '4'&&reportOther !== '1'}}">6. </view><view wx:elif="{{circumstanceStatusCode === '4'&&reportOther == '1'}}">7. </view><view wx:elif="{{reportOther !== '1'}}">5. </view><view wx:else>6. </view></view> 你或者被你报告的同事，需要公司提供紧急支持吗 Does the reported colleague need emergency support from the company？</view>
       <radio-group class="radio-group weui-cells__title" bindchange="radioEmergencySupportChange">
         <view class="radio " wx:key="key" wx:for-items="{{supports}}">
             <radio value="{{item.name}}" checked="{{item.checked}}"/>
@@ -67,7 +67,7 @@
       </radio-group>
     </view>
     <view class="section">
-      <view class="section__title">8. 你或者被你报告的同事，如身体情况允许远程工作，是否有远程工作的条件，包括Laptop，V.P.N
+      <view class="section__title"><view class="change_index"><view wx:if="{{circumstanceStatusCode === '4'&&reportOther !== '1'}}">7. </view><view wx:elif="{{circumstanceStatusCode === '4'&&reportOther == '1'}}">8. </view><view wx:elif="{{reportOther !== '1'}}">6. </view><view wx:else>7. </view></view> 你或者被你报告的同事，如身体情况允许远程工作，是否有远程工作的条件，包括Laptop，V.P.N
  token，Internet WIFI等 If
  the health condition allows you or the reported colleague to work remotely, do you or the reported colleague have sufficient facilities to work from home, including Laptop, V.P.N token, and internet WIFI, etc?</view>
       <radio-group class="radio-group weui-cells__title" bindchange="radioWFHChange">
