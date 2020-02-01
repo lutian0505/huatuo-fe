@@ -51,7 +51,9 @@ Page({
       { text: '提交成功', className: 'submitSucc' },
       { text: '提交失败', className: 'submitFail' }
     ],
-    responseData: {}
+    responseData: {},
+    region: [],
+    detailed: '',
   },
   onLoad: function () {
     this.setData({
@@ -84,6 +86,13 @@ Page({
     console.log('checkbox发生change事件，携带value值为：', e.detail.value)
   },
   bindLocated: function (e) {
+    var that = this;
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      detailed: e.detail.value[0] + " " + e.detail.value[1] + " " + e.detail.value[2],
+      //下拉框选中的值
+      region: e.detail.value
+    })
     this.setData({
       located: e.detail.value
     })
@@ -123,8 +132,6 @@ Page({
       accessKey: '',
       caseCode: '',
       formData: {
-        reporterStaffId: "xxxx",
-        reporterPhone: "133xxxxx",
         tips: {
           reportOther: this.data.reportOther,
           staffId: this.data.otherStaffId
@@ -134,11 +141,11 @@ Page({
           symptoms: this.data.checkboxSymptoms
         },
         located: {
-          province: "陕西",
-          city: "渭南",
-          district: "xxx"
+          province: this.data.region[0],
+          city: this.data.region[1],
+          district: this.data.region[2]
         },
-        startDate: this.data.startDate, //"20200130"
+        startDate: this.data.startDate.replace(/-/g, ''),
         emergencySupport: {
           needs: this.data.emergencySupportStatus,
           content: this.data.emergencySupportContent
@@ -152,6 +159,7 @@ Page({
   },
   submitFun: function () {
     let that = this;
+    wx.showToast({ title: '加载中', icon: 'loading', duration: 10000 });
     wx.request({
       url: 'https://www.hkg1vl0934.p2g.netd2.hsbc.com.hk/content/smo/index.html',
       data: that.submitParams(),
@@ -173,6 +181,7 @@ Page({
       },
       complete: function (res) {
         that.subitCalBack();
+        wx.hideToast();
       },
     })
   },

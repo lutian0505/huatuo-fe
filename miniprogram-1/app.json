@@ -14,20 +14,32 @@
   "sitemapLocation": "sitemap.json",
   "tabBar": {
     "color": "#a9b7b7",
-    "selectedColor": "#11cd6e",
+    "selectedColor": "#DB0011",
     "borderStyle": "white",
     "list": [
       {
-        "selectedIconPath": "image/home.png",
-        "iconPath": "image/home.png",
+        "selectedIconPath": "image/contact_active.png",
+        "iconPath": "image/contact.png",
         "pagePath": "pages/index/index",
-        "text": "首页"
+        "text": "报告"
       },
       {
-        "selectedIconPath": "image/upload.png",
-        "iconPath": "image/upload.png",
-        "pagePath": "pages/report/report",
-        "text": "上报"
+        "selectedIconPath": "image/alert.png",
+        "iconPath": "image/alert.png",
+        "pagePath": "pages/index/index",
+        "text": "消息"
+      },
+      {
+        "selectedIconPath": "image/securityHsbcServices.png",
+        "iconPath": "image/securityHsbcServices.png",
+        "pagePath": "pages/index/index",
+        "text": "打卡"
+      },
+      {
+        "selectedIconPath": "image/user.png",
+        "iconPath": "image/user.png",
+        "pagePath": "pages/index/index",
+        "text": "我"
       }
     ]
   }

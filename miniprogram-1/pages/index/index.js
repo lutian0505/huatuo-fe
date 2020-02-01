@@ -19,24 +19,28 @@ Page({
     emergentContactPhone: '',
     list: [
       {
-        id: 'form',
-        name: '健康自查上报',
-        open: false
+        id: 'report',
+        name: '举报/自我上报疫情',
+        open: false,
+        url: '../report/report'
       },
       {
-        id: 'widget',
-        name: '医疗物资捐赠',
-        open: false
+        id: 'vpn',
+        name: '上报V.P.N问题',
+        open: false,
+        url: '../report/report'
       },
       {
-        id: 'feedback',
-        name: '在家工作上报',
-        open: false
+        id: 'help',
+        name: '请求援助',
+        open: false,
+        url: '../report/report'
       },
       {
-        id: 'nav',
-        name: '更多新闻',
-        open: false
+        id: 'call',
+        name: '紧急热线',
+        open: false,
+        url: '../report/report'
       }
     ]
   },

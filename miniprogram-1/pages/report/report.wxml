@@ -1,17 +1,20 @@
 <!-- 简介 -->
-  <view class="counter">
-  <!--view class="report-title">
+<view class="counter">
+  <view class="report-title">
     <view class="weui-cells__title">随着新型冠状病毒疫情的加重，我们需要采用快速和数字化的机制来监控、探测及预防HTC同事的感染，并尽早采取相应的应对措施。</view>
-    <view class="weui-cells__title">请使用我们的疫情上报平台来上报你自己或其他同事的案例。报告案例可以是被官方确诊/疑似/密切接触的案例，也可以是潜在案例，如具有呼吸道感染症状(发烧、咳嗽等)。</view>
-    <view class="weui-cells__title">希望大家理解我们在特殊时期的这一安排，并提出一切配合与支持，与我们共同抗击疫情。</view>
+    <view class="weui-cells__title">请使用我们的疫情上报平台来上报你自己或其他同事的案例。报告的案例可以是被官方确诊/疑似/密切接触的案例，也可以是潜在案例，如具有呼吸道感染症状（发烧，咳嗽等）。</view>
+    <view class="weui-cells__title">希望大家理解我们在特殊时期的这一安排，并提供一切配合与支持，与我们共同抗击疫情。</view>
     <view class="weui-cells__title">请同事们在家中注意健康与安全！</view>
-  </view-->
+    <view class="weui-cells__title">As the novel coronavirus outbreak continues to gain momentum, we feel compelled to put in place some fast and digital mechanism to monitor, detect and prevent infection cases at HTC and inform our actions at an early stage. </view>
+    <view class="weui-cells__title">Please use our mobile “Report A Case” channel whenever you have a personal or peer case to report. The case can be officially confirmed/suspected/close contact cases, or potential cases like having respiratory infection symptoms (fever, coughing, etc).</view>
+    <view class="weui-cells__title">We hope you understand our arrangement in this special period and will provide whatever support needed to join us in combating the epidemic.</view>
+  </view>
   
   <view class="weui-two">
     <view class="section">
       <view class="section__title">1. 你为自己还是其他同事上报？ Are you reporting for you or other colleague?</view>
       <radio-group class="radio-group weui-cells__title" bindchange="radioReportOtherChange">
-        <view class="radio style-lable" wx:for-items="{{items}}">
+        <view class="radio style-lable" wx:key="key" wx:for-items="{{items}}">
           <radio value="{{item.name}}" checked="{{item.checked}}"/>
           <label>{{item.value}}</label>
         </view>
@@ -19,12 +22,12 @@
     </view>
     <view class="section" wx:if="{{reportOther === '1'}}">
       <view class="section__title">2. 你可以提供你所报告的同事的员工号吗 Can you provide the reported colleagues' staff ID？</view>
-      <input class="style-lable weui-cells__title" type="number"  maxlength="11" bindinput="bindKeyInput" placeholder=""/>
+      <input class="style-lable" style="margin:15px 16px;"  type="number"  maxlength="11" bindinput="bindKeyInput" placeholder=""/>
     </view>
     <view class="section">
       <view class="section__title">3. 你或者被你报告的同事，现在的情况是 What is the current circumstance of the reported colleague？</view>
       <radio-group class="radio-group weui-cells__title" bindchange="radioCircumstanceStatusCode">
-        <view class="radio style-lable" wx:for-items="{{circumstances}}">
+        <view class="radio style-lable" wx:key="key" wx:for-items="{{circumstances}}">
             <radio value="{{item.name}}" checked="{{item.checked}}"/>
             <label>{{item.value}}</label>
         </view>
@@ -32,7 +35,7 @@
     </view>
     <view class="section" wx:if="{{circumstanceStatusCode === '4'}}">
       <view class="section__title">4. 有何症状</view>
-      <checkbox-group bindchange="checkboxSymptomsChange">
+      <checkbox-group class="weui-cells__title" bindchange="checkboxSymptomsChange">
         <label class="checkbox" wx:for="{{symptoms}}">
           <checkbox value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
         </label>
@@ -40,7 +43,11 @@
     </view>
     <view class="section" style="margin-top:10px">
       <view class="section__title">5. 你或者被你报告的同事，现在的所在地 Where are you or the reported colleague located?</view>
-      <view class="weui-cells__title" ><input class="style-lable" type="text" bindinput="bindLocated" placeholder=""/></view>
+      <view class="weui-cells__title" >
+        <picker mode="region" bindchange="bindLocated" value="{{detailed}}" custom-item="{{customItem}}" name="detailed">
+          <view class="picker style-lable"><view style="opacity:0;display: inline;">a</view>{{detailed}}</view>
+        </picker>
+      </view>
     </view>
     <view class="section">
       <view class="section__title">6. 你或者被你报告的同事，是什么时候开始发现相关症状的 When did the current symptom start？</view>
@@ -51,7 +58,7 @@
     <view class="section">
       <view class="section__title">7. 你或者被你报告的同事，需要公司提供紧急支持吗 Does the reported colleague need emergency support from the company？</view>
       <radio-group class="radio-group weui-cells__title" bindchange="radioEmergencySupportChange">
-        <view class="radio style-lable" wx:for-items="{{supports}}">
+        <view class="radio style-lable" wx:key="key" wx:for-items="{{supports}}">
             <radio value="{{item.name}}" checked="{{item.checked}}"/>
             <label>{{item.value}}</label>
             <input wx:if="{{item.name === '0'}}" class="style-lable weui-cells__title" type="text" bindinput="bindEmergencySupportContent" placeholder=""/>
@@ -63,7 +70,7 @@
  token，Internet WIFI等 If
  the health condition allows you or the reported colleague to work remotely, do you or the reported colleague have sufficient facilities to work from home, including Laptop, V.P.N token, and internet WIFI, etc?</view>
       <radio-group class="radio-group weui-cells__title" bindchange="radioWFHChange">
-        <view class="radio style-lable" wx:for-items="{{remotelys}}">
+        <view class="radio style-lable" wx:key="key" wx:for-items="{{remotelys}}">
             <radio value="{{item.name}}" checked="{{item.checked}}"/>
             <label>{{item.value}}</label>
             <input wx:if="{{item.name === '1'}}" class="style-lable weui-cells__title" type="text" bindinput="bindWfhContent" placeholder=""/>
