@@ -4,7 +4,7 @@ const app = getApp()
 
 Page({
   data: {
-    workLocationArray: ['Guangzhou Taikoo Hui Tower 1', 'Guangzhou Taikoo Hui Tower 2', 'Guangzhou Jiang Wan WeWork', 'Guangzhou Renfeng Building', 'Guangzhou Pazhou', 'Guangzhou Machang', 'Xi\'an'],
+    workLocationArray: ['广州太古汇一座', '广州太古汇二座', '广州江湾WeWork', '广州壬丰大厦', '广州琶洲', '西安'],
     currentLocationArray: ['北京','上海','广州','深圳'],
     motto: 'Hello World',
     userInfo: {},

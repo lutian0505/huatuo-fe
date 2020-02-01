@@ -1,21 +1,30 @@
 /* pages/databaseGuide/databaseGuide.wxss*/
 
-.radio,.checkbox{
+.kind-list__img{
+    width: 40pt;
+    height: 40pt;
+    margin: 10px auto;
+    display: block;
+}
+.radio,.checkbox,input{
   display: block; 
+  margin: 10px 0;
 }
 .counter {
   margin: 10px;
+  font-family: UICTFontTextStyleBody;
+  font-size: 17px;
 }
 input{
-  font-size:20px;
   padding:5px;
-  border: 1px solid #ddd;
 }
-.style-lable{
-  padding:5px;
+.picker,input{
   border: 1px solid #ddd;
-  padding-right: 16px;
-
+  padding:5px;
+}
+.picker{
+  height: 1.4rem;
+  min-height: 1.4rem;
 }
 .report-title view{
   margin-top:15px;

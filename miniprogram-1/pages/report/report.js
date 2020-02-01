@@ -176,7 +176,7 @@ Page({
       fail: function (res) {
         console.log('fail');
         that.setData({
-          responseData: that.data.requestItems[1]
+          responseData: that.data.requestItems[0]
         })
       },
       complete: function (res) {
