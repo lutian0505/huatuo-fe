@@ -8,20 +8,13 @@
   </view-->
   
   <view class="weui-two">
-    <!--<view class="section">
-      <view class="weui-cells__title">1. 你的员工编号 Your Staff Id</view>
-     <input class="style-lable weui-cells__title"  maxlength="10" bindinput="bindKeyInput" placeholder=""/>
-    </view>
-    <view class="section">
-      <view class="section__title">2. 你的紧急联系电话 Your cell phone for emergency call:</view>
-      <input class="style-lable weui-cells__title" type="number"  maxlength="11" bindinput="bindKeyInput" placeholder=""/>
-    </view>-->
     <view class="section">
       <view class="section__title">1. 你为自己还是其他同事上报？ Are you reporting for you or other colleague?</view>
       <radio-group class="radio-group weui-cells__title" bindchange="radioReportOtherChange">
-          <radio class="style-lable" wx:for-items="{{items}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
-              <text>{{item.value}}</text>
-          </radio>
+        <view class="radio style-lable" wx:for-items="{{items}}">
+          <radio value="{{item.name}}" checked="{{item.checked}}"/>
+          <label>{{item.value}}</label>
+        </view>
       </radio-group>
     </view>
     <view class="section" wx:if="{{reportOther === '1'}}">
@@ -31,9 +24,10 @@
     <view class="section">
       <view class="section__title">3. 你或者被你报告的同事，现在的情况是 What is the current circumstance of the reported colleague？</view>
       <radio-group class="radio-group weui-cells__title" bindchange="radioCircumstanceStatusCode">
-          <radio class="style-lable" wx:for-items="{{circumstances}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
-              <text>{{item.value}}</text>
-          </radio>
+        <view class="radio style-lable" wx:for-items="{{circumstances}}">
+            <radio value="{{item.name}}" checked="{{item.checked}}"/>
+            <label>{{item.value}}</label>
+        </view>
       </radio-group>
     </view>
     <view class="section" wx:if="{{circumstanceStatusCode === '4'}}">
@@ -51,16 +45,17 @@
     <view class="section">
       <view class="section__title">6. 你或者被你报告的同事，是什么时候开始发现相关症状的 When did the current symptom start？</view>
       <picker mode="date" value="{{startDate}}" start="1870-01-01" end="2050-12-31" bindchange="bindDateChange">
-        <view class="picker style-lable weui-cells__title"><view style="opacity:0;display: inline;">a</view>{{brithday}} </view>
+        <view class="picker style-lable weui-cells__title"><view style="opacity:0;display: inline;">a</view>{{startDate}} </view>
       </picker>
     </view>
     <view class="section">
       <view class="section__title">7. 你或者被你报告的同事，需要公司提供紧急支持吗 Does the reported colleague need emergency support from the company？</view>
       <radio-group class="radio-group weui-cells__title" bindchange="radioEmergencySupportChange">
-          <radio class="style-lable" wx:for-items="{{supports}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
-              <text>{{item.value}}</text>
-              <input wx:if="{{item.name === '0'}}" class="style-lable weui-cells__title" type="text" bindinput="bindLocated" placeholder=""/>
-          </radio>
+        <view class="radio style-lable" wx:for-items="{{supports}}">
+            <radio value="{{item.name}}" checked="{{item.checked}}"/>
+            <label>{{item.value}}</label>
+            <input wx:if="{{item.name === '0'}}" class="style-lable weui-cells__title" type="text" bindinput="bindEmergencySupportContent" placeholder=""/>
+        </view>
       </radio-group>
     </view>
     <view class="section">
@@ -68,12 +63,13 @@
  token，Internet WIFI等 If
  the health condition allows you or the reported colleague to work remotely, do you or the reported colleague have sufficient facilities to work from home, including Laptop, V.P.N token, and internet WIFI, etc?</view>
       <radio-group class="radio-group weui-cells__title" bindchange="radioWFHChange">
-          <radio class="style-lable" wx:for-items="{{remotelys}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
-              <text>{{item.value}}</text>
-              <input wx:if="{{item.name === '1'}}" class="style-lable weui-cells__title" type="text" bindinput="bindLocated" placeholder=""/>
-          </radio>
+        <view class="radio style-lable" wx:for-items="{{remotelys}}">
+            <radio value="{{item.name}}" checked="{{item.checked}}"/>
+            <label>{{item.value}}</label>
+            <input wx:if="{{item.name === '1'}}" class="style-lable weui-cells__title" type="text" bindinput="bindWfhContent" placeholder=""/>
+        </view>
       </radio-group>
     </view>
   </view>
-  <button type="default" class="button" > 提交 </button> 
+  <button type="default" class="button" bindtap="submit" > 提交 </button> 
 </view>

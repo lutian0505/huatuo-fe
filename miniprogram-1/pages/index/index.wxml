@@ -9,7 +9,7 @@
               <view class="weui-label">员工号</view>
           </view>
           <view class="weui-cell__bd">
-              <input class="weui-input" placeholder="请输入你的员工号"/>
+              <input class="weui-input" placeholder="请输入你的员工号" bindinput="getStaffid"/>
           </view>
       </view>
       <view class="weui-cell">
@@ -17,7 +17,7 @@
               <view class="weui-label">确认输入</view>
           </view>
           <view class="weui-cell__bd">
-              <input class="weui-input" placeholder="请再次输入你的员工号"/>
+              <input class="weui-input" placeholder="请再次输入你的员工号" bindinput="getStaffidAgain"/>
           </view>
       </view>
     </view>
@@ -30,16 +30,98 @@
               <view class="weui-label">中文姓名</view>
           </view>
           <view class="weui-cell__bd">
-              <input class="weui-input" placeholder="你的中文姓名"/>
+              <input class="weui-input" placeholder="你的中文姓名" bindinput="getName"/>
+          </view>
+      </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell ">
+          <view class="weui-cell__hd">
+              <view class="weui-label">手机号码</view>
+          </view>
+          <view class="weui-cell__bd">
+              <input class="weui-input" placeholder="你的手机号码" bindinput="getPhone"/>
           </view>
       </view>
     </view>  
+
+    <view class="weui-cells__title">
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+            <view class="weui-label"><text class="select">办公点</text></view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="workLocationChange" value="{{workLocationIndex}}" range="{{workLocationArray}}">
+            <view class="weui-select weui-select_in-select-after">{{workLocationArray[workLocationIndex]}}</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+
+    <view class="weui-cells__title">
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+            <view class="weui-label"><text class="select">当前位置</text></view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="currentLocationChange" value="{{currentLocationIndex}}" range="{{currentLocationArray}}">
+            <view class="weui-select weui-select_in-select-after">{{currentLocationArray[currentLocationIndex]}}</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+
+    <view class="weui-cells__title">请填写紧急联系人
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell ">
+          <view class="weui-cell__hd">
+              <view class="weui-label">名字</view>
+          </view>
+          <view class="weui-cell__bd">
+              <input class="weui-input" placeholder="紧急联系人的名字" bindinput="getEmergentContactName" />
+          </view>
+      </view>
+      <view class="weui-cell">
+          <view class="weui-cell__hd">
+              <view class="weui-label">手机号码</view>
+          </view>
+          <view class="weui-cell__bd">
+              <input class="weui-input" placeholder="紧急联系人的手机号码" bindinput="getEmergentContactPhone"/>
+          </view>
+      </view>
+    </view>
   </view>
   
   <view class="userinfo">
-    <button class="weui-btn" type="default" plain="true" wx:if="{{!loginSuccess}}" open-type="getUserInfo" bindtap="binding"> 绑定信息 </button>
+    <button class="weui-btn submit" type="default" plain="true" wx:if="{{!loginSuccess}}" open-type="getUserInfo" bindtap="binding"> 绑定信息 </button>
     <block wx:else>
-      <text>News Waterflow. To Be Continue...</text>
+    <view class="page__bd page__bd_spacing">
+      <view class="kind-list">
+          <block wx:for="{{list}}" wx:key="id">
+              <view class="kind-list__item">
+                  <view id="{{item.id}}" class="weui-flex kind-list__item-hd {{item.open ? 'kind-list__item-hd_show' : ''}}" bindtap="kindToggle">
+                      <view class="weui-flex__item">{{item.name}}</view>
+                      <image class="kind-list__img" src="images/icon_nav_{{item.id}}.png"></image>
+                  </view>
+                  <view class="kind-list__item-bd {{item.open ? 'kind-list__item-bd_show' : ''}}">
+                      <view class="weui-cells {{item.open ? 'weui-cells_show' : ''}}">
+                          <block wx:for="{{item.pages}}" wx:for-item="page" wx:key="*this">
+                              <navigator url="{{page}}/{{page}}" class="weui-cell weui-cell_access">
+                                  <view class="weui-cell__bd">{{page}}</view>
+                                  <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                              </navigator>
+                          </block>
+                      </view>
+                  </view>
+              </view>
+          </block>
+      </view>
+    </view>
     </block>
   </view>
 </view>

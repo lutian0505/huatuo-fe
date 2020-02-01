@@ -10,6 +10,8 @@ Page({
     circumstanceStatusCode: '',
     startDate: '',
     emergencySupportStatus: '',
+    emergencySupportContent: '',
+    wfhContent: '',
     wfhStatus: '',
     items: [
       { name: '0', value: '我自己 Myself' },
@@ -53,13 +55,15 @@ Page({
   },
   radioReportOtherChange: function (e) {
     this.setData({
-      reportOther: e.detail.value
+      reportOther: e.detail.value,
+      otherStaffId: ''
     })
     console.log('radio发生change事件，携带value值为：', e.detail.value)
   },
   radioCircumstanceStatusCode: function (e) {
     this.setData({
-      circumstanceStatusCode: e.detail.value
+      circumstanceStatusCode: e.detail.value,
+      checkboxSymptoms: ''
     })
     console.log('radio发生change事件，携带value值为：', e.detail.value)
   },
@@ -83,13 +87,28 @@ Page({
   radioEmergencySupportChange: function (e) {
     console.log('radio Emergency发送选择改变，携带值为', e.detail)
     this.setData({
-      emergencySupportStatus: e.detail.value
+      emergencySupportStatus: e.detail.value,
+      emergencySupportContent: ''
     })
   },
   radioWFHChange: function (e) {
     this.setData({
-      wfhStatus: e.detail.value
+      wfhStatus: e.detail.value,
+      wfhContent: ''
     })
     console.log('radio WFH发生change事件，携带value值为：', e.detail.value)
+  },
+  bindEmergencySupportContent: function (e) {
+    this.setData({
+      emergencySupportContent: e.detail.value
+    })
+  },
+  bindWfhContent: function (e) {
+    this.setData({
+      wfhContent: e.detail.value
+    })
+  },
+  submit: function () {
+    console.log('submit');
   }
 })

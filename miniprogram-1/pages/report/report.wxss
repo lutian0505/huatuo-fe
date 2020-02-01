@@ -1,28 +1,25 @@
-/* pages/databaseGuide/databaseGuide.wxss */
+/* pages/databaseGuide/databaseGuide.wxss*/
 
-
-
+.radio,.checkbox{
+  display: block; 
+}
 .counter {
   margin: 10px;
 }
 input{
-  
   font-size:20px;
   padding:5px;
   border: 1px solid #ddd;
-}
-radio, .checkbox{
-  display: block; 
 }
 .style-lable{
   padding:5px;
   border: 1px solid #ddd;
 }
 .report-title view{
-  margin-top:10px;
+  margin-top:15px;
 }
 .weui-cells__title{
-  margin: 10px 0;
+  margin: 15px 0;
 }
 .section__title{
   font-size:15px;
@@ -32,4 +29,4 @@ button {
   margin: 10px;
   width: 100%!important;
   color:#FFF!important;
-}
+} 
