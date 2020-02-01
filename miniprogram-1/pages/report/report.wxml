@@ -71,6 +71,6 @@
       </radio-group>
     </view>
   </view>
-  <view wx:if="{{submited}}" class="submit">提交成功</view>
-  <button type="default" class="button" bindtap="submit" > 提交 </button> 
+  <view wx:if="{{submited}}" class="submit {{responseData.className}}">{{responseData.text}}</view>
+  <button type="default" class="button" bindtap="submitFun" > 提交 </button> 
 </view>

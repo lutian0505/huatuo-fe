@@ -49,3 +49,13 @@ page{
     height: 0;
     overflow: hidden;
 }
+button {
+  background-color: #DB0011!important;
+  margin: 10px;
+  color:#FFF!important;
+}
+.submit{
+  color:#11cd6e;
+  text-align: center;
+  margin: 15px 0;
+}

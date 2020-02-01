@@ -47,7 +47,16 @@ Page({
         name: '1', value: '无法远程工作(请提供具体原因）No,cannot work from home(please describe your current status)'
       }
     ],
-    inputValue: ''
+    requestItems: [
+      { text: '提交成功', className: 'submitSucc' },
+      { text: '提交失败', className: 'submitFail' }
+    ],
+    responseData: {}
+  },
+  onLoad: function () {
+    this.setData({
+      submited: false
+    })
   },
   bindKeyInput: function (e) {
     this.setData({
@@ -109,10 +118,67 @@ Page({
       wfhContent: e.detail.value
     })
   },
-  submit: function () {
+  submitParams: function () {
+    return {
+      accessKey: '',
+      caseCode: '',
+      formData: {
+        reporterStaffId: "xxxx",
+        reporterPhone: "133xxxxx",
+        tips: {
+          reportOther: this.data.reportOther,
+          staffId: this.data.otherStaffId
+        },
+        circumstance: {
+          statusCode: this.data.circumstanceStatusCode,
+          symptoms: this.data.checkboxSymptoms
+        },
+        located: {
+          province: "陕西",
+          city: "渭南",
+          district: "xxx"
+        },
+        startDate: this.data.startDate, //"20200130"
+        emergencySupport: {
+          needs: this.data.emergencySupportStatus,
+          content: this.data.emergencySupportContent
+        },
+        wfh: {
+          can: this.data.wfhStatus,
+          content: this.data.wfhContent
+        }
+      }
+    };
+  },
+  submitFun: function () {
+    let that = this;
+    wx.request({
+      url: 'https://www.hkg1vl0934.p2g.netd2.hsbc.com.hk/content/smo/index.html',
+      data: that.submitParams(),
+      header: {
+        'content-type': 'application/json'
+      },
+      success(res) {
+        console.log('submit');
+        console.log(res.data);
+        that.setData({
+          responseData: that.data.requestItems[0]
+        })
+      },
+      fail: function (res) {
+        console.log('fail');
+        that.setData({
+          responseData: that.data.requestItems[1]
+        })
+      },
+      complete: function (res) {
+        that.subitCalBack();
+      },
+    })
+  },
+  subitCalBack: function (e) {
     this.setData({
       submited: true
     })
-    console.log('submit');
-  }
+  },
 })

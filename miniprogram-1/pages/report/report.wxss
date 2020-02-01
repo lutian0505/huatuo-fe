@@ -33,7 +33,12 @@ button {
   color:#FFF!important;
 }
 .submit{
-  color:#11cd6e;
   text-align: center;
   margin: 15px 0;
+}
+.submitSucc{
+  color:#11cd6e;
+}
+.submitFail{
+  color:#DB0011;
 }

@@ -98,7 +98,7 @@
   </view>
   
   <view class="userinfo">
-    <button class="weui-btn submit" type="default" plain="true" wx:if="{{!loginSuccess}}" open-type="getUserInfo" bindtap="binding"> 绑定信息 </button>
+    <button type="default" class="button" wx:if="{{!loginSuccess}}" open-type="getUserInfo" bindtap="binding"> 绑定信息 </button>
     <block wx:else>
     <view class="page__bd page__bd_spacing">
       <view class="kind-list">
