@@ -3,19 +3,56 @@ App({
   loginWithCode: function (code, isDummy) {
     //TODO: get staff id
     if (isDummy){
-      this.globalData.staffid='43859166';
       this.globalData.loginSuccess=true;
       this.globalData.accessKey='1232';
     }else{
       console.info('call backend to check whether has bind');
+      wx.request({
+        url: 'test.php', //仅为示例，并非真实的接口地址
+        data: {
+          code: code
+        },
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        success(res) {
+          console.info('login success');
+          console.log(res.data);
+          //if then true
+          this.globalData.loginSuccess = true;
+          this.globalData.accessKey = '1232';
+        },
+        fail(res){
+          console.info('login error');
+        }
+      });
     }
   },
-  bindWithAccessKey: function (accessKey, isDummy) {
+  bindWithAccessKey: function (accessKey, staffid, staffidAgain, name, phone, workLocation, currentLocation, emergentContactName, emergentContactPhone, isDummy) {
+
+    console.info(accessKey, staffid, staffidAgain, name, phone, workLocation, currentLocation, emergentContactName, emergentContactPhone);
     if (isDummy) {
-      this.globalData.staffid = '43859166';
       this.globalData.loginSuccess = true;
     } else {
       console.info('call backend to bind');
+      wx.request({
+        url: 'test.php', //仅为示例，并非真实的接口地址
+        data: {
+          code: code
+        },
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        success(res) {
+          console.info('login success');
+          console.log(res.data);
+          //if then true
+          this.globalData.loginSuccess = true;
+        },
+        fail(res) {
+          console.info('login error');
+        }
+      });
     }
   },
   onLaunch: function () {

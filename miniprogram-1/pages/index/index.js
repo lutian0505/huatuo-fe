@@ -123,7 +123,7 @@ Page({
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     console.info(this.data.staffid, this.data.staffidAgain, this.data.name, this.data.phone, this.data.workLocationIndex, this.data.currentLocationIndex, this.data.emergentContactName, this.data.emergentContactPhone);
-    app.bindWithAccessKey(app.globalData.accessKey, true);
+    app.bindWithAccessKey(app.globalData.accessKey, this.data.staffid, this.data.staffidAgain, this.data.name, this.data.phone, this.data.workLocationArray[this.data.workLocationIndex], this.data.currentLocationArray[this.data.currentLocationIndex], this.data.emergentContactName, this.data.emergentContactPhone, true);
     this.setData({
       loginSuccess: app.globalData.loginSuccess
     })

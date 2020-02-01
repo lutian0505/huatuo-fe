@@ -40,12 +40,12 @@
     </view>
     <view class="section" style="margin-top:10px">
       <view class="section__title">5. 你或者被你报告的同事，现在的所在地 Where are you or the reported colleague located?</view>
-      <input class="style-lable weui-cells__title" type="text" bindinput="bindLocated" placeholder=""/>
+      <view class="weui-cells__title" ><input class="style-lable" type="text" bindinput="bindLocated" placeholder=""/></view>
     </view>
     <view class="section">
       <view class="section__title">6. 你或者被你报告的同事，是什么时候开始发现相关症状的 When did the current symptom start？</view>
-      <picker mode="date" value="{{startDate}}" start="1870-01-01" end="2050-12-31" bindchange="bindDateChange">
-        <view class="picker style-lable weui-cells__title"><view style="opacity:0;display: inline;">a</view>{{startDate}} </view>
+      <picker mode="date" value="{{startDate}}" class=" weui-cells__title" start="1870-01-01" end="2050-12-31" bindchange="bindDateChange">
+        <view class="picker style-lable"><view style="opacity:0;display: inline;">a</view>{{startDate}} </view>
       </picker>
     </view>
     <view class="section">
@@ -71,5 +71,6 @@
       </radio-group>
     </view>
   </view>
+  <view wx:if="{{submited}}" class="submit">提交成功</view>
   <button type="default" class="button" bindtap="submit" > 提交 </button> 
 </view>

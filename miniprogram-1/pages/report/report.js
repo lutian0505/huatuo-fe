@@ -13,6 +13,7 @@ Page({
     emergencySupportContent: '',
     wfhContent: '',
     wfhStatus: '',
+    submited: false,
     items: [
       { name: '0', value: '我自己 Myself' },
       { name: '1', value: '其他同事 Another colleague' }
@@ -109,6 +110,9 @@ Page({
     })
   },
   submit: function () {
+    this.setData({
+      submited: true
+    })
     console.log('submit');
   }
 })
